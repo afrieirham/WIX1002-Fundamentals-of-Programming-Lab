@@ -23,6 +23,8 @@ public class Money {
     private double counter_20;
     private double counter_10;
     private double counter_5;
+    
+    private float ans = 0;
 
   public void noteCalculator(double amount){
     counter100 = (int) (amount/100);
@@ -38,27 +40,31 @@ public class Money {
 
   }
 
-  public void roundUp(){
-    int test = (int) (amount*100)%10;
-
-    switch(test){
-      case 0:
-      case 1:
-      case 2: amount = (int) (amount/1);
-      break;
-      case 3:
-      case 4:
-      case 5:
-      case 6:
-      case 7: amount =  (int) (amount/1) + 0.05;
-      break;
-      case 8:
-      case 9: amount = (int) (amount/1) + 0.1;
-      break;
-
-
-    }
-
+  public void roundUp(double number){
+    int test = (int) ((number * 100) % 100);
+    int ten = test/10;
+    int one = test%10;
+    switch(one){
+            case 0:
+            case 1: 
+            case 2: ans = (ten*10);
+                break;
+            case 3:
+            case 4:
+            case 5:
+            case 6: 
+            case 7: ans = (ten*10) + 5;
+                break;
+            case 8: 
+            case 9: ans = (ten*10) + 10;
+                break;
+        }
+    
+    ans /= 100;
+    float sub = (float) amount % 1;
+    amount = amount - sub;
+    amount = amount + ans;
+    System.out.printf("Rounded = %.2f\n" , amount);
   }
 
   public void showNotes(){

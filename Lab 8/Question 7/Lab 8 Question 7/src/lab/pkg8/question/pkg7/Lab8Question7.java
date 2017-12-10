@@ -12,13 +12,16 @@ public class Lab8Question7 {
         Random rand = new Random();
 
 
-        float amount = rand.nextFloat()*1000;
-        String amount1 = df.format(amount);
+                
+        double amount = rand.nextDouble()*1000;
+        System.out.println(amount);
+//
+        afrie.roundUp(amount);
         afrie.noteCalculator(amount);
-        System.out.println("RM" + amount1);
-        System.out.println("-----");
-        afrie.roundUp();
+        System.out.printf("RM%.2f\n",amount);
         afrie.showNotes();
+
+
 }
 
 }
